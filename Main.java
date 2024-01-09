@@ -26,7 +26,9 @@ public class Main {
         case Add:
           System.out.print("新しいタスクを入力して下さい：");
           String task = scanner.nextLine();
-          TodoList.addItem(task);
+          System.out.print("優先度を入力して下さい：");
+          int priority = scanner.nextInt();
+          TodoList.addItem(task, priority);
           break;
         case Remove:
           System.out.print("削除するUUID番号を入力して下さい:");
