@@ -15,6 +15,7 @@ public class Main {
       System.out.println("2. タスクを削除");
       System.out.println("3. タスクを表示");
       System.out.println("4. 終了");
+      System.out.print(">");
 
       //選択肢を受け取っている
       int choiceNum = scanner.nextInt();
