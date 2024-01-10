@@ -8,6 +8,13 @@ class Todo {
   String randomId;
   String task;
   int priority;
+
+  public void setTask(String task) {
+    this.task = task;
+  }
+  public void setPriority(int priority) {
+    this.priority = priority;
+  }
 }
 
 public class TodoList {
@@ -28,6 +35,35 @@ public class TodoList {
   public void removeItem(String key) {
     if (tasks.containsKey(key)) {
       tasks.remove(key);
+    } else {
+      System.out.println("無効なキーです");
+    }
+  }
+
+  // 編集機能
+  public void updateItem(String key, String newTask, int newPriority){
+    if (tasks.containsKey(key)) {
+      Todo todo = tasks.get(key);
+
+      System.out.println("編集前");
+      System.out.print("ID:");
+      System.out.println(todo.randomId);
+      System.out.print("タスク:");
+      System.out.println(todo.task);
+      System.out.print("優先度:");
+      System.out.println(todo.priority);
+
+      todo.setTask(newTask);
+      todo.setPriority(newPriority);
+
+      System.out.println("------------------------------");
+      System.out.println("編集後");
+      System.out.print("ID:");
+      System.out.println(todo.randomId);
+      System.out.print("新たなタスク:");
+      System.out.println(todo.task);
+      System.out.print("新たな優先度:");
+      System.out.println(todo.priority);
     } else {
       System.out.println("無効なキーです");
     }
@@ -70,5 +106,9 @@ public class TodoList {
       System.out.println(todo.priority);
       index++;
     }
+  }
+
+  public void setTasks(Map<String, Todo> tasks) {
+    this.tasks = tasks;
   }
 }

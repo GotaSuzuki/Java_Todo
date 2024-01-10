@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
   enum Choice {
-    Add, Remove, Display, SortDisplay, Exit
+    Add, Remove, Update, Display, SortDisplay, Exit
   }
 
   public static void main(String[] args) {
@@ -14,9 +14,10 @@ public class Main {
       System.out.println("操作を選択してください:");
       System.out.println("1. タスクを追加");
       System.out.println("2. タスクを削除");
-      System.out.println("3. タスクを表示");
-      System.out.println("4. 優先度順にタスクを表示");
-      System.out.println("5. 終了");
+      System.out.println("3. タスクを編集する");
+      System.out.println("4. タスクを表示");
+      System.out.println("5. 優先度順にタスクを表示");
+      System.out.println("6. 終了");
       System.out.print(">>>");
 
       // 選択肢を受け取っている
@@ -34,8 +35,17 @@ public class Main {
           break;
         case Remove:
           System.out.print("削除するUUID番号を入力して下さい:");
-          String index = scanner.nextLine();
-          TodoList.removeItem(index);
+          String removeId = scanner.nextLine();
+          TodoList.removeItem(removeId);
+          break;
+        case Update:
+          System.out.print("編集するUUID番号を入力して下さい:");
+          String updateId = scanner.nextLine();
+          System.out.print("新しいタスクを入力して下さい：");
+          String newTask = scanner.nextLine();
+          System.out.print("新しい優先度を入力して下さい：");
+          int newPriority = scanner.nextInt();
+          TodoList.updateItem(updateId, newTask, newPriority);
           break;
         case Display:
           TodoList.displayItem();
