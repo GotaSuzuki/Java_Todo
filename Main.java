@@ -2,8 +2,9 @@ import java.util.Scanner;
 
 public class Main {
   enum Choice {
-    Add,Remove,Display,Exit
+    Add, Remove, Display, SortDisplay, Exit
   }
+
   public static void main(String[] args) {
     TodoList TodoList = new TodoList();
     Scanner scanner = new Scanner(System.in);
@@ -14,10 +15,11 @@ public class Main {
       System.out.println("1. タスクを追加");
       System.out.println("2. タスクを削除");
       System.out.println("3. タスクを表示");
-      System.out.println("4. 終了");
-      System.out.print(">");
+      System.out.println("4. 優先度順にタスクを表示");
+      System.out.println("5. 終了");
+      System.out.print(">>>");
 
-      //選択肢を受け取っている
+      // 選択肢を受け取っている
       int choiceNum = scanner.nextInt();
       Choice choice = Choice.values()[choiceNum - 1];
       scanner.nextLine();
@@ -37,6 +39,9 @@ public class Main {
           break;
         case Display:
           TodoList.displayItem();
+          break;
+        case SortDisplay:
+          TodoList.sortByPriority();
           break;
         case Exit:
           System.out.println("アプリケーションを終了します");
